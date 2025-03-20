@@ -1,28 +1,77 @@
 // Declare global variables
 let numRows = 0;
 let numCols = 0;
-let colorSelected; 
+// let colorSelected; 
 
 // Add a row
 function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    const newRow = table.insertRow();
+
+    if (numCols === 0) {
+        numCols = 1;
+    }
+
+    for (let i = 0; i < numCols; i++) {
+        newRow.insertCell();
+    }
+
+    numRows++;
 }
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    console.log("Before addC: numRows =", numRows, "numCols =", numCols);
+    if (numRows === 0) {
+        addR();
+        console.log("After addC (added row): numRows =", numRows, "numCols =", numCols);
+        return;
+    } else {
+        
+        for (let i = 0; i < table.rows.length; i++) {
+            table.rows[i].insertCell();
+        }
+    }
+    numCols++;
+    console.log("After addC: numRows =", numRows, "numCols =", numCols);
 }
+
 
 // Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+
+    if (numRows > 0) {
+        table.deleteRow(numRows - 1);
+        numRows--;
+
+        if (numRows === 0) {
+            numCols = 0;
+        }
+    } 
 }
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+    console.log("Before removeC: numRows =", numRows, "numCols =", numCols);
+    if (numCols > 0) {
+        for (let i = 0; i < table.rows.length; i++) {
+            table.rows[i].deleteCell(numCols - 1);
+        }
+        numCols--;
+        if (numCols === 0) {
+            while (table.rows.length > 0) {
+                table.deleteRow(0);
+                numRows--;
+            }
+        }
+    }
+    console.log("After removeC: numRows =", numRows, "numCols =", numCols);
 }
 
+/*
 // Set global variable for selected color
 function selectColor(){
     colorSelected = document.getElementById("selectedColorId").value;
@@ -43,3 +92,4 @@ function fillAll(){
 function clearAll(){
     alert("Clicked Clear All"); // Replace this line with your code.
 }
+*/

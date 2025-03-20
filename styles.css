@@ -1,8 +1,7 @@
-tr,td{
-    border:1px;
-    border-style: solid;
+tr, td {
+    border: 1px solid black;
 }
-td{
+td {
     height: 50px;
     width: 50px;
     background-color: white;
