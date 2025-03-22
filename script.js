@@ -124,15 +124,13 @@ function fillAll(){
     }
 }
 
-/*
-
-// Fill all cells
-function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
-}
-
 // Clear all cells
 function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+
+    for(let row of table.rows){
+        for(let cell of row.cells){
+            cell.style.backgroundColor = "white";
+        }
+    }
 }
-*/
