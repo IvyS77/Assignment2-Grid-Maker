@@ -1,7 +1,7 @@
 // Declare global variables
 let numRows = 0;
 let numCols = 0;
-// let colorSelected; 
+let colorSelected = null; 
 
 // Add a row
 function addR() {
@@ -13,7 +13,14 @@ function addR() {
     }
 
     for (let i = 0; i < numCols; i++) {
-        newRow.insertCell();
+        //modified start
+        const newCell = newRow.insertCell();
+        newCell.addEventListener("click",function(){
+            if(colorSelected && colorSelected!=="SELECT"){
+                newCell.style.backgroundColor = colorSelected;
+            }
+        });
+        //modified end
     }
 
     numRows++;
@@ -30,7 +37,13 @@ function addC() {
     } else {
         
         for (let i = 0; i < table.rows.length; i++) {
-            table.rows[i].insertCell();
+            //modified code
+            const newCell = table.rows[i].insertCell();
+            newCell.addEventListener("click",function(){
+                if(colorSelected && colorSelected!== "SELECT"){
+                    newCell.style.backgroundColor = colorSelected;
+                }
+            });
         }
     }
     numCols++;
@@ -71,12 +84,13 @@ function removeC() {
     console.log("After removeC: numRows =", numRows, "numCols =", numCols);
 }
 
-/*
 // Set global variable for selected color
 function selectColor(){
     colorSelected = document.getElementById("selectedColorId").value;
     console.log(colorSelected);
 }
+
+/*
 
 // Fill all uncolored cells
 function fillU(){
