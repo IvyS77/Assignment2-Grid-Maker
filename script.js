@@ -26,6 +26,7 @@ function addR() {
     numRows++;
 }
 
+/*
 // Add a column
 function addC() {
     const table = document.getElementById("grid");
@@ -134,3 +135,4 @@ function clearAll(){
         }
     }
 }
+*/
