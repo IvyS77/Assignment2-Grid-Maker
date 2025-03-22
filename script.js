@@ -111,12 +111,20 @@ function fillU(){
 
 }
 
-/*
+// Fill all cells
+function fillAll(){
+    const table = document.getElementById("grid");
 
-// Fill all uncolored cells
-function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+    for(let row of table.rows){
+        for(let cell of row.cells){
+            if(colorSelected && colorSelected !== "SELECT"){
+                cell.style.backgroundColor = colorSelected;
+            }
+        }
+    }
 }
+
+/*
 
 // Fill all cells
 function fillAll(){
