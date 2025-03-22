@@ -90,6 +90,27 @@ function selectColor(){
     console.log(colorSelected);
 }
 
+// Fill all uncolored cells
+function fillU(){
+    const table = document.getElementById("grid");
+
+    for(let row of table.rows){
+        for(let cell of row.cells){
+            const currentColor = cell.style.backgroundColor;
+
+            //check if cell is uncolored(white)
+            if(currentColor === "" || currentColor === "white"){
+                if(colorSelected && colorSelected!=="SELECT"){
+                    cell.style.backgroundColor = colorSelected;
+                }
+            }
+
+        }
+    }
+
+
+}
+
 /*
 
 // Fill all uncolored cells
